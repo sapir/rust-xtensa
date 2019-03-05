@@ -22,6 +22,7 @@ mod x86;
 mod x86_64;
 mod x86_win64;
 mod wasm32;
+mod xtensa;
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum IgnoreMode {
@@ -581,6 +582,7 @@ impl<'a, Ty> FnType<'a, Ty> {
             "hexagon" => hexagon::compute_abi_info(self),
             "riscv32" => riscv::compute_abi_info(self, 32),
             "riscv64" => riscv::compute_abi_info(self, 64),
+            "xtensa" => xtensa::compute_abi_info(self, 32),
             a => return Err(format!("unrecognized arch \"{}\" in target specification", a))
         }
 
