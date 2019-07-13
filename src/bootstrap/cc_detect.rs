@@ -165,6 +165,14 @@ fn set_compiler(cfg: &mut cc::Build,
             }
         }
 
+        // I guess the cc crate doesn't support detecting these yet
+        "xtensa-esp32-none-elf" => {
+            cfg.compiler("xtensa-esp32-elf-gcc");
+        }
+        "xtensa-esp8266-none-elf" => {
+            cfg.compiler("xtensa-esp8266-elf-gcc");
+        }
+
         "mips-unknown-linux-musl" => {
             if cfg.get_compiler().path().to_str() == Some("gcc") {
                 cfg.compiler("mips-linux-musl-gcc");
