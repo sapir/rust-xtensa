@@ -17,13 +17,8 @@ pub fn target() -> TargetResult {
         options: TargetOptions {
             executables: true,
             cpu: "esp8266".to_string(),
-            // The LLVM backend currently can't generate object files. To
-            // workaround this LLVM generates assembly files which then we feed
-            // to gcc to get object files. For this reason we have a hard
-            // dependency on this specific gcc.
-            // asm_args: vec!["-mcpu=esp8266".to_string()],
+
             linker: Some("xtensa-esp32-elf-gcc".to_string()),
-            no_integrated_as: true,
 
             max_atomic_width: Some(32),
             atomic_cas: true,
