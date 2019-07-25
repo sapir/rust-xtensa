@@ -29,7 +29,7 @@ fn classify_arg_ty<Ty>(arg: &mut ArgType<'_, Ty>, xlen: u64, remaining_gpr: &mut
     if alignment.bits() == 2 * xlen {
         required_gpr = 2 + (*remaining_gpr % 2);
     } else if  arg_size.bits() > xlen && arg_size.bits() <= MAX_ARG_IN_REGS_SIZE {
-        required_gpr = arg_size.bits() + (xlen - 1) / xlen; 
+        required_gpr = (arg_size.bits() + (xlen - 1)) / xlen;
     }
 
     if required_gpr > *remaining_gpr {
