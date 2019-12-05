@@ -3529,6 +3529,13 @@ dependencies = [
 name = "rustc_driver"
 version = "0.0.0"
 dependencies = [
+ "rustc_driver_static",
+]
+
+[[package]]
+name = "rustc_driver_static"
+version = "0.0.0"
+dependencies = [
  "env_logger 0.7.1",
  "graphviz",
  "lazy_static 1.3.0",
